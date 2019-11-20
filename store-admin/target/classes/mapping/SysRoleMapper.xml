@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htg.admin.mapper.SysRoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.htg.common.entity.user.SysRole">
+        <id column="id" property="id"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="name" property="name"/>
+        <result column="remark" property="remark"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        create_user,
+        update_user,
+        create_time,
+        update_time,
+        id, name, remark, deleted
+    </sql>
+    <select id="getRoleByName" resultType="com.htg.common.entity.user.SysRole" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_role where name=#{name} and deleted=0
+    </select>
+
+    <sql id="Role_Column_List">
+        SR.create_user,
+        SR.update_user,
+        SR.create_time,
+        SR.update_time,
+        SR.id,
+        SR.name,
+        SR.remark,
+        SR.deleted
+    </sql>
+
+    <select id="findRoleByUserId" resultType="com.htg.common.entity.user.SysRole" parameterType="map">
+        select
+        <include refid="Role_Column_List"/>
+        from user_role_rel URR
+        left join sys_role SR on URR.role_id=SR.id
+        where URR.deleted=0 and SR.deleted=0 and URR.user_id=#{userId}
+    </select>
+
+</mapper>

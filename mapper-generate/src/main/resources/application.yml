@@ -1,0 +1,10 @@
+server:
+  port: 9020
+spring:
+  application:
+    name: mapper-generate
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/open-store?characterEncoding=utf-8&serverTimezone=GMT%2B8

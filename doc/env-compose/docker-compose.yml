@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mysql_main:
+    image: mysql:5.7
+    container_name: mysql_main_container
+    ports:
+      - 1106:3306       # 端口映射
+    volumes:
+      - /home/ext/docker/mysql/main/db:/var/lib/mysql # 数据文件挂载
+      - /home/ext/docker/mysql/main/conf:/etc/mysql/conf.d #配置文件挂载
+      - /home/ext/docker/mysql/main/log:/var/log/mysql #日志文件挂载
+    environment:       # 设置环境变量
+      MYSQL_ROOT_PASSWORD: 123456
