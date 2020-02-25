@@ -15,19 +15,11 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="open_store@106.75.244.42" uuid="f4818d81-2f2a-40b2-a8aa-9cbf81edfb7b">
+    <data-source source="LOCAL" name="open_store@121.199.65.205" uuid="f4818d81-2f2a-40b2-a8aa-9cbf81edfb7b">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://106.75.244.42:1106/open_store</jdbc-url>
-      <driver-properties>
-        <property name="autoReconnect" value="true" />
-        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
-        <property name="tinyInt1isBit" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="yearIsDateType" value="false" />
-      </driver-properties>
+      <jdbc-url>jdbc:mysql://121.199.65.205:1106/open_store</jdbc-url>
     </data-source>
   </component>
 </project>

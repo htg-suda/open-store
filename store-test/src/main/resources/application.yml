@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: dev_loc
+
+---
+server:
+  port: 9999
+spring:
+  application:
+    name: store-test
+  profiles: dev_loc   # 本地测试
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

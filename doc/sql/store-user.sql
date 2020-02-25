@@ -2,6 +2,8 @@ create database open_store charset utf8;
 use open_store;
 
 -- alter table tb_user add column isAdmin tinyint not null  default 0 comment '是否是管理员 1-是,0-不是' after staus;
+-- alter table tb_user add column status tinyint not null default 1 comment '1-激活,2-注销' after email;
+-- alter table tb_user add column is_admin tinyint not null  default 0 comment '是否是管理员 1-是,0-不是' after staus;
 
 create table tb_user(
     -- id 一律采用 bigint
@@ -10,8 +12,8 @@ create table tb_user(
     password varchar(255) not null comment '用户密码',
     tel varchar(20) not null unique comment '用户手机号码',
     email varchar(20) unique comment '用户邮箱',
-    staus tinyint not null default 1 comment '1-激活,2-注销',
-    isAdmin tinyint not null  default 0 comment '是否是管理员 1-是,0-不是',
+    status tinyint not null default 1 comment '1-激活,2-注销',
+    is_admin tinyint not null  default 0 comment '是否是管理员 1-是,0-不是',
     deleted tinyint not null default 0 comment '删除标记 0-未删除,1-已删除',
     create_user bigint not null comment '创建人ID',
     update_user bigint not null comment '更新者ID',

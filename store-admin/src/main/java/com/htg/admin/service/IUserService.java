@@ -20,7 +20,7 @@ public interface IUserService extends IService<User> {
     /* 通过用户名获取用户 */
     User getUserByUserName(String username);
 
-    UserVO addUser(UserDTO addDTO);
+    UserVO addUser(UserDTO addDTO, boolean isAdmin);
 
     UserVO modifyUser(UserModifyDTO modfiyDTO);
 

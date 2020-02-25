@@ -48,8 +48,12 @@ public class User extends BaseEntity {
 
 
     @ApiModelProperty(value = "1-激活,2-注销",example = "1")
-    @TableField("staus")
-    private Integer staus;
+    @TableField("status")
+    private Integer status;
+
+    @ApiModelProperty(value = "是否是管理员 1-是,0-不是",example = "1")
+    @TableField("is_admin")
+    private Integer isAdmin;
 
 
     @ApiModelProperty(value = "删除标记 0-未删除,1-已删除",example = "0")

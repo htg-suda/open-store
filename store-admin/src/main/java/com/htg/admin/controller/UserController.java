@@ -18,6 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 
 /**
@@ -40,11 +41,20 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    @ApiOperation(value = "添加管理员")
+    @ResponseBody
+    @PostMapping("/add_admin")
+    public CommonResult<UserVO> addAmin(@Valid @RequestBody UserDTO addDTO) {
+        UserVO userVO = userService.addUser(addDTO, true);
+        return CommonResult.success(userVO);
+    }
+
+
     @ApiOperation(value = "添加用户")
     @ResponseBody
     @PostMapping("/add")
     public CommonResult<UserVO> addUser(@Valid @RequestBody UserDTO addDTO) {
-        UserVO userVO = userService.addUser(addDTO);
+        UserVO userVO = userService.addUser(addDTO, false);
         return CommonResult.success(userVO);
     }
 
@@ -70,7 +80,7 @@ public class UserController {
     @ApiOperation(value = "用户名 + 密码 登陆")
     @ResponseBody
     @PostMapping("/login")
-    public CommonResult<LoginVO> loginUser(@RequestParam(value = "username") String username, @RequestParam(value = "password")String password) {
+    public CommonResult<LoginVO> loginUser(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, password);
         try {
             Authentication authenticate = authenticationManager.authenticate(auth);

@@ -47,6 +47,9 @@ public class SecutrityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 /* 允许登陆接口 */
                 .antMatchers("/admin/user/login").permitAll()
+                /* 允许添加管理员 */
+                .antMatchers("/admin/user/login").permitAll()
+
                 /* swagger start */
                 .antMatchers("/swagger-ui.html").permitAll()
                 .antMatchers("/swagger-resources/**").permitAll()
@@ -61,7 +64,7 @@ public class SecutrityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(myAuthenticationEntryPoint).accessDeniedHandler(myAccessDeniedHandler)
                 .and().addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
         /* 禁用缓存 */
-       // http.headers().cacheControl();
+        // http.headers().cacheControl();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 

@@ -13,7 +13,8 @@
         <result column="password" property="password"/>
         <result column="tel" property="tel"/>
         <result column="email" property="email"/>
-        <result column="staus" property="staus"/>
+        <result column="is_admin" property="isAdmin"/>
+        <result column="status" property="status"/>
         <result column="deleted" property="deleted"/>
     </resultMap>
 
@@ -23,7 +24,7 @@
         update_user,
         create_time,
         update_time,
-        id, username, password, tel, email, staus, deleted
+        id, username, password, tel, email, is_admin,status, deleted
     </sql>
     <select id="getUserByName" parameterType="map" resultType="com.htg.common.entity.user.User">
         select

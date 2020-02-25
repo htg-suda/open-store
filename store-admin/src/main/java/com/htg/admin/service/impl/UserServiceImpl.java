@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.htg.admin.constants.UserConst;
 import com.htg.admin.mapper.UserMapper;
 import com.htg.admin.service.IUserService;
-import com.htg.common.constants.ComConst;
+import com.htg.common.constants.EntityConst;
 import com.htg.common.dto.UserDTO;
 import com.htg.common.dto.UserModifyDTO;
 import com.htg.common.dto.UserPageDTO;
@@ -40,7 +40,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
 
-    public UserVO addUser(UserDTO addDTO) {
+    public UserVO addUser(UserDTO addDTO, boolean isAdmin) {
         String username = addDTO.getUsername();
         String tel = addDTO.getTel();
         String email = addDTO.getEmail();
@@ -55,10 +55,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
         User user = new User();
         BeanUtils.copyProperties(addDTO, user);
-        user.setDeleted(ComConst.UNDELETED);
-        user.setStaus(UserConst.ACTIVE);
+        user.setDeleted(EntityConst.UNDELETED);
+        user.setStatus(UserConst.ACTIVE);
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));
+        user.setIsAdmin(isAdmin ? UserConst.IS_ADMIN : UserConst.IS_NOT_ADMIN);
         save(user);
 
         UserVO vo = new UserVO();

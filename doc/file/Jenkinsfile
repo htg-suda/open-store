@@ -1,0 +1,16 @@
+pipeline{
+    agent any  //
+    stages{
+        stage('bulid'){
+            steps{
+                echo 'fisrt step!'
+            }
+        }
+        stage('docker-bulid'){
+            step{
+                docker build -t store-admin .
+                docker run -p 0.0.0.0:9020:9020 --name store-admin store-admin
+            }
+        }
+    }
+}

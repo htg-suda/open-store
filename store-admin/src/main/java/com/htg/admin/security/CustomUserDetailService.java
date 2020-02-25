@@ -23,12 +23,12 @@ public class CustomUserDetailService implements UserDetailsService {
         if (user == null) throw new UsernameNotFoundException("用户不存在");
         String name = user.getUsername();
         String password = user.getPassword();
-        Integer staus = user.getStaus();
+        Integer status = user.getStatus();
 
         List<GrantedAuthority> list=new ArrayList<>();
         list.add(new MySimpleAuthority(""));
 
-        CustomUserDetails details = new CustomUserDetails(password, name, null, staus);
+        CustomUserDetails details = new CustomUserDetails(password, name, null, status);
         return details;
     }
 }

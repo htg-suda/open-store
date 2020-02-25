@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="store-test" />
         <module name="store-common" />
-        <module name="mapper-generate" />
-        <module name="store-admin" />
         <module name="store-user" />
+        <module name="store-gateway" />
+        <module name="store-admin" />
+        <module name="mapper-generate" />
       </profile>
     </annotationProcessing>
   </component>
@@ -18,6 +20,8 @@
       <module name="mapper-generate" options="-parameters" />
       <module name="store-admin" options="-parameters" />
       <module name="store-common" options="-parameters" />
+      <module name="store-gateway" options="-parameters" />
+      <module name="store-test" options="-parameters" />
       <module name="store-user" options="-parameters" />
     </option>
   </component>

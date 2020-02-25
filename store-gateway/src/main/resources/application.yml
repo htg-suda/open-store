@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: dev_loc
+
+# spring cloud gate way 的配置说明:
+
+# spring.cloud.gateway.discovery.locator.enabled
+# 是否与服务注册于发现组件进行结合，通过 serviceId 转发到具体的服务实例。默认为false，
+# 设为true便开启通过服务中心的自动根据 serviceId 创建路由的功能。
+# 一般只要上面的配置完成 就可以实现 通过 http://localhost:7001/服务名/url 来访问 指定服务的 服务了
+
+# 对于spring.cloud.gateway.routes 就是代表一个路由 数组
+# id 代表 service_customer 表示
+---
+server:
+  port: 9000
+spring:
+  application:
+    name: store-gateway
+  profiles: dev_loc
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: route01   # 可以任意写,表示一个唯一的路由
+          uri: http://localhost:9999
+          # order: 1000  # 匹配的优先级, 当有某个url 匹配上了多个路由的时候,这里的优先级就发挥了作用
+          predicates:
+            - Path=/exam/**
+          filters:
+            - StripPrefix=1  # 去掉一个前缀 比如 url 为 http://localhost:9000/exam/test01 转发过去后会变为 http://localhost:9999/test01
+            - name: Retry
+              args:
+                key-resolver: '#{@apiKeyResolver}'     #用于限流的键的解析器的 Bean 对象的名字。它使用 SpEL 表达式根据#{@beanName}从 Spring 容器中获取 Bean 对象。
+                redis-rate-limiter.replenishRate: 1     #令牌桶每秒填充平均速率。
+                redis-rate-limiter.burstCapacity: 3     # 令牌桶总容量
+

@@ -59,7 +59,7 @@ public class SimpleGenerator {
         strategy.setSuperEntityClass("com.htg.common.base.BaseEntity");
         /* entity  base类中的 字段,这里的字段不会出现在 entity 类中 */
         strategy.setSuperEntityColumns(new String[]{"create_time", "update_time", "create_user", "update_user"});
-        //strategy.setSuperControllerClass("com.adshow.core.common.controller.BaseController");
+        //strategy.setSuperControllerClass("com.adshow.core.common.com.htg.test.controller.BaseController");
         /* 生成的 Controller 是Rest 风格的*/
         strategy.setRestControllerStyle(true);
         /* 乐观锁字段名*/
@@ -77,12 +77,12 @@ public class SimpleGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
 
-        /* com.htg.mybatis_plus_study.controller*/
+        /* com.htg.mybatis_plus_study.com.htg.test.controller*/
         pc.setParent("com");
         pc.setModuleName("htg");
 
 
-        pc.setController("user.controller");
+        pc.setController("user.com.htg.test.controller");
         pc.setService("user.service");
         pc.setServiceImpl("user.service.impl");
         pc.setMapper("user.mapper");
