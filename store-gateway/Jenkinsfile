@@ -9,13 +9,6 @@ pipeline {
     }
 
     stages {
-        stage('pipeline study') {
-           steps {
-                echo 'current path :'
-                sh 'pwd'
-
-           }
-        }
         stage('Pull Code from Git') {
             steps {
                 git(
