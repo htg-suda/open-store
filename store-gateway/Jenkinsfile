@@ -13,7 +13,7 @@ pipeline {
             steps {
                 git(
                         branch: "master",                                           // 切换到哪个分支
-                        url: 'http://10.0.0.57:8081/root/open_store.git',  // git 仓库地址
+                        url: 'http://10.0.0.57:8081/root/open_store',  // git 仓库地址
                         changelog: true                                              // 是否打印log
                 )
             }
