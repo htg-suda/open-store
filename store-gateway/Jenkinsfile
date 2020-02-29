@@ -72,7 +72,7 @@ pipeline {
     post {   //完成时动作
         always {  // 无论如何都要打印
             echo 'always print'
-
+            echo 'always do it'
         }
         success {
             echo '==> success!'  // 成功后打印
