@@ -25,7 +25,9 @@ pipeline {
         }
 
         stage('Deploy'){
-
+            steps {
+                echo '开始部署了!!'
+            }
 
         }
     }
