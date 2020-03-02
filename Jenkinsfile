@@ -20,7 +20,8 @@ pipeline {
         }
         stage('Compile Code') {
             steps {
-                sh 'mvn clean compile package -Dmaven.test.skip=true'
+                echo '开始编译了!!'
+               // sh 'mvn clean compile package -Dmaven.test.skip=true'
             }
         }
 
@@ -39,7 +40,7 @@ pipeline {
         }
         success {
             echo '==> success!'  // 成功后打印
-            sh 'docker logs -f store-admin' // 打印 docker 中的log
+           // sh 'docker logs -f store-admin' // 打印 docker 中的log
         }
         failure { echo '==> failed!' } // 失败时打印
 
