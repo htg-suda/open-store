@@ -11,7 +11,7 @@
         <module>store-user</module>
       <!--  <module>mapper-generate</module>-->
         <module>store-common</module>
-      <!--  <module>store-admin</module>-->
+       <module>store-admin</module>
         <module>store-gateway</module>
         <module>store-test</module>
     </modules>
