@@ -1,19 +1,30 @@
 /* 所谓的 pipeline 就是软件定义编译过程*/
+/* */
+/* https://jenkins.io/zh/doc/book/pipeline/syntax/ */
 pipeline {
 
-    agent any
+    agent none
     environment {  // 配置环境变量
         GIT_URL = 'ssh://git@10.0.0.57:6022/root/open_store.git'
     }
 
-    tools {  // 引用工具, 需要在 jenkins 配置 maven 环境 ==> Manage jenkins -> Global Tool Configuration -> Maven
+    tools {  // 引用工具, 这个工具需要在 jenkins 的页面中 配置 maven 环境 ==> Manage jenkins -> Global Tool Configuration -> Maven
         maven 'apache-maven-3.6.3'
 
     }
 
+    /*
+      stages  包含一系列一个或多个 stage 指令, stages 部分是流水线描述的大部分"work" 的位置。
+     建议 stages 至少包含一个 stage 指令用于连续交付过程的每个离散部分,比如构建, 测试, 和部署。
+    */
     stages {
+        stage('Input'){
+            input message: '', parameters: [choice(choices: ['66,00,99'], description: 'xxxxxx', name: '选择模块')]
+        }
+
+
         stage('Pull Code from Git') {
-            steps {
+            steps {     // steps 部分必须包含一个或多个步骤。
                 git(
                         branch: "master",                                           // 切换到哪个分支
                         url: 'ssh://git@10.0.0.57:6022/root/open_store.git',        // git 仓库地址
