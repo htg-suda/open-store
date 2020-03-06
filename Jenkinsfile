@@ -18,11 +18,8 @@ pipeline {
      建议 stages 至少包含一个 stage 指令用于连续交付过程的每个离散部分,比如构建, 测试, 和部署。
     */
     stages {
-        stage('Input'){
-            input {
-                message: '笑嘻嘻'
-                parameters: [choice(choices: ['66,00,99'], description: 'xxxxxx', name: '选择模块')]
-            }
+        stage('Input') {
+            result = input id: '123', message: '是否执行应用回滚？', ok: '是的', parameters: [string(defaultValue: 'devops-service', description: '', name: 'serviceName', trim: false)] println(result)
         }
 
 
