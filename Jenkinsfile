@@ -2,8 +2,7 @@
 /* */
 /* https://jenkins.io/zh/doc/book/pipeline/syntax/ */
 pipeline {
-
-    agent none
+    agent any
     environment {  // 配置环境变量
         GIT_URL = 'ssh://git@10.0.0.57:6022/root/open_store.git'
     }
