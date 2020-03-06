@@ -19,7 +19,13 @@ pipeline {
     */
     stages {
         stage('Input') {
-            result = input id: '123', message: '是否执行应用回滚？', ok: '是的', parameters: [string(defaultValue: 'devops-service', description: '', name: 'serviceName', trim: false)] println(result)
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
         }
 
 
