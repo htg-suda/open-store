@@ -23,7 +23,7 @@ pipeline {
                 ok "Yes, we should."
                 parameters {
                     //string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                    choice(choices: ['66,00,99'], description: 'xxxxxx', name: 'PERSON')
+                    choice(choices: ['模块1','模块2','模块3'], description: 'xxxxxx', name: 'PERSON')
                 }
             }
 
