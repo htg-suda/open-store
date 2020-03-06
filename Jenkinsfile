@@ -19,7 +19,10 @@ pipeline {
     */
     stages {
         stage('Input'){
-            input message: '', parameters: [choice(choices: ['66,00,99'], description: 'xxxxxx', name: '选择模块')]
+            input {
+                message: '笑嘻嘻'
+                parameters: [choice(choices: ['66,00,99'], description: 'xxxxxx', name: '选择模块')]
+            }
         }
 
 
