@@ -23,12 +23,13 @@ pipeline {
                 ok "Yes, we should."
                 parameters {
                     //string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                    choice(choices: ['模块1','模块2','模块3'], description: 'xxxxxx', name: 'PERSON')
+                    // choice(choices: ['模块1','模块2','模块3'], description: 'xxxxxx', name: 'PERSON')
+                    extendedChoice(defaultValue: '001', description: 'this is a demo', descriptionPropertyValue: 'xxxxxxx', name: 'PM_TEST', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', value: '001,002,003,004', visibleItemCount: 10)
                 }
             }
 
             steps {
-                echo "Hello, ${PERSON}, nice to meet you."
+                echo "Hello, ${PM_TEST}, nice to meet you."
             }
         }
 
