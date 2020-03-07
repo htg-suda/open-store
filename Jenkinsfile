@@ -31,8 +31,9 @@ pipeline {
             steps {
                 echo "Hello, ${ReleaseModels}, nice to meet you."
                 script{
-                    def str=${ReleaseModels}
+                    def str=env.ReleaseModels
                     String[] arr=str.split(',')
+                    print '=========> this is htg'
                     arr.each{print it}
                 }
             }
