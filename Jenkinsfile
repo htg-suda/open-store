@@ -30,6 +30,11 @@ pipeline {
 
             steps {
                 echo "Hello, ${ReleaseModels}, nice to meet you."
+                script{
+                    def str=${ReleaseModels}
+                    String[] arr=str.split(',')
+                    arr.each{print it}
+                }
             }
         }
 
@@ -57,6 +62,7 @@ pipeline {
                     script {  // 忽略编译时报错的方法 参考 https://www.soinside.com/question/UxtwJvAgGqikPPcWSSKwC9
                         try {
                             sh 'docker stop store-admin'
+
                         } catch (e) {
                             echo '--------------'
                             echo e.message
