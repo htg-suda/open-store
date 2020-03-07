@@ -34,8 +34,8 @@ pipeline {
                     def str=env.ReleaseModels
 
                     String[] arr=str.split(',')
-                    print '=========> env is '+ env
-                    arr.each{print '===>'+it}
+                    print '=========> env is '+ env.toString()
+                    arr.each{val -> println '===>'+val}
                 }
             }
         }
