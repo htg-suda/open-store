@@ -32,8 +32,9 @@ pipeline {
                 echo "Hello, ${ReleaseModels}, nice to meet you."
                 script{
                     def str=env.ReleaseModels
+
                     String[] arr=str.split(',')
-                    print '=========> this is htg'
+                    print '=========> env is '+ env
                     arr.each{print '===>'+it}
                 }
             }
