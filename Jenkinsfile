@@ -36,6 +36,7 @@ pipeline {
                     String[] arr=str.split(',')
                     print '=========> env is '+ env.toString()
                     arr.each{val -> println '===>'+val}
+                    print "++++ ${arr[0]};${arr[1]} ++++"
                 }
             }
         }
