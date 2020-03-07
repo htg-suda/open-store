@@ -22,14 +22,14 @@ pipeline {
                 message "Should we continue?"
                 ok "Yes, we should."
                 parameters {
-                    //string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
                     // choice(choices: ['模块1','模块2','模块3'], description: 'xxxxxx', name: 'PERSON')
-                    extendedChoice(defaultValue: '001', description: 'this is a demo', name: 'PM_TEST', type: 'PT_CHECKBOX', value: '模块1,模块2,模块3,模块4', visibleItemCount: 10)
+                   // extendedChoice(defaultValue: '001', description: 'this is a demo', name: 'PERSON', type: 'PT_CHECKBOX', value: '模块1,模块2,模块3,模块4')
                 }
             }
 
             steps {
-                echo "Hello, ${PM_TEST}, nice to meet you."
+                echo "Hello, ${ReleaseModels}, nice to meet you."
             }
         }
 
