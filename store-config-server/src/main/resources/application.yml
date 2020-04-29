@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: DEV
+
+---
+server:
+  port: 5001
+spring:
+  application:
+    name: abcdeserver
+  profiles: DEV
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.0.0.54:8848
+    config:
+      server:
+        git:
+          uri: git@github.com:htg-suda/server-config.git  # 应用配置中心地址 这里采用ssh 的方式 访问git仓库
+          search-paths: /**

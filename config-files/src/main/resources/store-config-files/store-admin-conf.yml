@@ -1,13 +1,13 @@
 spring:
   profiles:
-    active: dev_loc
+    active: DEV
 ---
 server:
   port: 9020
 spring:
   application:
     name: store-admin
-  profiles: dev_loc   # 本地测试
+  profiles: DEV   # 开发环境
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
@@ -39,7 +39,7 @@ server:
 spring:
   application:
     name: store-admin
-  profiles: dev_remote   # 远程测试
+  profiles: PROD   # 生产环境
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root

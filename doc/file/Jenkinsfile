@@ -1,15 +1,60 @@
-pipeline{
+pipeline {
     agent any  //
-    stages{
-        stage('bulid'){
-            steps{
+    stages {
+        stage('bulid') {
+            steps {
                 echo 'fisrt step!'
             }
         }
-        stage('docker-bulid'){
-            step{
-                docker build -t store-admin .
-                docker run -p 0.0.0.0:9020:9020 --name store-admin store-admin
+        stage('docker-bulid') {
+            step {
+               sh 'docker build -t store-admin .'
+               sh 'docker run -p 0.0.0.0:9020:9020 --name store-admin store-admin'
+            }
+        }
+
+
+        stage('Deploy') {
+            /*    agent {
+                    dockerfile {
+                        filename 'Dockerfile'
+                        dir './open-store/store-admin/'
+                        label 'store-admin'
+                    }
+                }*/
+
+            steps {
+                dir('./store-admin') {   //必须到 ./store-admin 目录下,否则运行表错
+                    script {  // 忽略编译时报错的方法 参考 https://www.soinside.com/question/UxtwJvAgGqikPPcWSSKwC9
+                        try {
+                            sh 'docker stop store-admin'
+                        } catch (e) {
+                            echo '--------------'
+                            echo e.message
+                            echo '--------------'
+                        }
+                        try {
+                            sh 'docker rm  store-admin'  // 删除容器
+                        } catch (e) {
+                            echo '##############'
+                            echo e.message
+                            echo '##############'
+                        }
+                        try {
+                            sh 'docker rmi -f store-admin'  // 强制删除
+                        } catch (e) {
+                            echo '++++++++++++++'
+                            echo e.message
+                            echo '++++++++++++++'
+                        }
+                    }
+                    //docker-compose up -d  在后台启动容器
+
+                    sh 'docker build -f Dockerfile -t store-admin .'
+                    // -d 表示后台启动 -t 表示分配一个伪终端
+                    sh 'docker run -d -t  -p 0.0.0.0:9020:9020 --name store-admin store-admin '
+                    // sh 'docker logs -f ContainerID'  -f 表示 实时监控之后的log
+                }
             }
         }
     }

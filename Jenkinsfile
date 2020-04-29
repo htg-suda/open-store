@@ -1,4 +1,4 @@
-/* 所谓的 pipeline 就是软件定义编译过程*/
+/* 所谓的 pipeline 就是软件定义编译过程 */
 /* */
 /* https://jenkins.io/zh/doc/book/pipeline/syntax/ */
 pipeline {
@@ -9,7 +9,6 @@ pipeline {
 
     tools {  // 引用工具, 这个工具需要在 jenkins 的页面中 配置 maven 环境 ==> Manage jenkins -> Global Tool Configuration -> Maven
         maven 'apache-maven-3.6.3'
-
     }
 
     /*
@@ -24,19 +23,27 @@ pipeline {
                 parameters {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
                     // choice(choices: ['模块1','模块2','模块3'], description: 'xxxxxx', name: 'PERSON')
-                   // extendedChoice(defaultValue: '001', description: 'this is a demo', name: 'PERSON', type: 'PT_CHECKBOX', value: '模块1,模块2,模块3,模块4')
+                    // extendedChoice(defaultValue: '001', description: 'this is a demo', name: 'PERSON', type: 'PT_CHECKBOX', value: '模块1,模块2,模块3,模块4')
                 }
             }
 
             steps {
                 echo "Hello, ${ReleaseModels}, nice to meet you."
-                script{
-                    def str=env.ReleaseModels
+                script {
+                    def str = env.ReleaseModels
 
-                    String[] arr=str.split(',')
-                    print '=========> env is '+ env.toString()
-                    arr.each{val -> println '===>'+val}
+                    String[] arr = str.split(',')
+                    print '=========> env is ' + env.toString()
+                    arr.each {
+                        (val) -> {
+                            sh "docker build -f Dockerfile -t store-admin ."
+                            // -d 表示后台启动 -t 表示分配一个伪终端
+                            sh "docker run -d -t  -p 0.0.0.0:9020:9020 --name store-admin store-admin "
+                            // sh 'docker logs -f ContainerID'  -f 表示 实时监控之后的log
+                        }
+                    }
                     print "++++ ${arr[0]};${arr[1]} ++++"
+
                 }
             }
         }
@@ -93,9 +100,7 @@ pipeline {
                     sh 'docker run -d -t  -p 0.0.0.0:9020:9020 --name store-admin store-admin '
                     // sh 'docker logs -f ContainerID'  -f 表示 实时监控之后的log
                 }
-
             }
-
         }
     }
 
@@ -109,6 +114,5 @@ pipeline {
             // sh 'docker logs -f store-admin' // 打印 docker 中的log
         }
         failure { echo '==> failed!' } // 失败时打印
-
     }
 }

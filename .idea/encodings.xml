@@ -2,12 +2,14 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config-files/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mapper-generate" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mapper-generate/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-admin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-admin/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/store-config-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-gateway" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-test" charset="UTF-8" />

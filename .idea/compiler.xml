@@ -2,24 +2,29 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="store-test" />
+        <module name="store-admin" />
+        <module name="store-config-server" />
         <module name="store-common" />
         <module name="store-user" />
         <module name="store-gateway" />
-        <module name="store-admin" />
+        <module name="store-test" />
+        <module name="config-files" />
         <module name="mapper-generate" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="config-files" options="-parameters" />
       <module name="mapper-generate" options="-parameters" />
       <module name="store-admin" options="-parameters" />
       <module name="store-common" options="-parameters" />
+      <module name="store-config-server" options="-parameters" />
       <module name="store-gateway" options="-parameters" />
       <module name="store-test" options="-parameters" />
       <module name="store-user" options="-parameters" />
