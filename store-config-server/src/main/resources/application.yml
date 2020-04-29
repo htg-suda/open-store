@@ -16,5 +16,5 @@ spring:
     config:
       server:
         git:
-          uri: git@github.com:htg-suda/server-config.git  # 应用配置中心地址 这里采用ssh 的方式 访问git仓库
-          search-paths: /**
+          uri: git@github.com:htg-suda/open-store-config.git  # 应用配置中心地址 这里采用ssh 的方式 访问git仓库
+          search-paths: store-config-files/*                  #配置路径
