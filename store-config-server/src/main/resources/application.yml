@@ -1,20 +1,37 @@
 spring:
   profiles:
-    active: DEV
+    active: dev
 
 ---
 server:
   port: 5001
 spring:
   application:
-    name: abcdeserver
-  profiles: DEV
+    name: config-server
+  profiles: pro
   cloud:
     nacos:
       discovery:
-        server-addr: 10.0.0.54:8848
+        server-addr: 127.0.0.1:8848
     config:
       server:
         git:
           uri: git@github.com:htg-suda/open-store-config.git  # 应用配置中心地址 这里采用ssh 的方式 访问git仓库
-          search-paths: store-config-files/*                  #配置路径
+          search-paths: store-config-files/*                  #配置所有配置文件所在的路径
+---
+server:
+  port: 5001
+spring:
+  application:
+    name: config-server
+  profiles: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    config:
+      server:
+        git:
+          uri: git@github.com:htg-suda/open-store-config.git  # 应用配置中心地址 这里采用ssh 的方式 访问git仓库
+          search-paths: store-config-files/*                  #配置所有配置文件所在的路径
+

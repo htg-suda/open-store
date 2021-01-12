@@ -2,10 +2,10 @@ package com.htg.admin.controller;
 
 
 import com.htg.admin.service.ISysRoleService;
-import com.htg.common.dto.SysRoleDTO;
+import com.htg.common.dto.user.SysRoleDTO;
 import com.htg.common.entity.user.SysRole;
 import com.htg.common.result.CommonResult;
-import com.htg.common.vo.SysRoleVO;
+import com.htg.common.vo.user.SysRoleVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -28,9 +28,9 @@ import java.util.List;
 @Validated
 @Api(tags = "003-角色管理")
 @RestController
-@RequestMapping("/admin/role")
+@RequestMapping("/role")
 public class SysRoleController {
-    /*  */
+
     @Autowired
     private ISysRoleService roleService;
 
@@ -43,7 +43,6 @@ public class SysRoleController {
     }
 
     /* 删除角色*/
-
     @ApiOperation(value = "删除角色")
     @ResponseBody
     @PostMapping("/delete/{id}")

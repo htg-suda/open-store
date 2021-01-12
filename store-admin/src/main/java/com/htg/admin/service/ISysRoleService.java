@@ -1,9 +1,9 @@
 package com.htg.admin.service;
 
-import com.htg.common.dto.SysRoleDTO;
+import com.htg.common.dto.user.SysRoleDTO;
 import com.htg.common.entity.user.SysRole;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.htg.common.vo.SysRoleVO;
+import com.htg.common.vo.user.SysRoleVO;
 
 import java.util.List;
 

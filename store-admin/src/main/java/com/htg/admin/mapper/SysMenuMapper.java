@@ -1,10 +1,10 @@
 package com.htg.admin.mapper;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.htg.common.dto.MenuPageDTO;
+import com.htg.common.dto.user.MenuPageDTO;
 import com.htg.common.entity.user.SysMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.htg.common.vo.MenuItemVO;
+import com.htg.common.vo.user.MenuItemVO;
 
 import java.util.List;
 

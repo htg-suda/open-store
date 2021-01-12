@@ -1,12 +1,12 @@
 package com.htg.admin.service;
 
-import com.htg.common.dto.UserDTO;
-import com.htg.common.dto.UserModifyDTO;
-import com.htg.common.dto.UserPageDTO;
+import com.htg.common.dto.user.UserDTO;
+import com.htg.common.dto.user.UserModifyDTO;
+import com.htg.common.dto.user.UserPageDTO;
 import com.htg.common.entity.user.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.htg.common.result.RespPage;
-import com.htg.common.vo.UserVO;
+import com.htg.common.vo.user.UserVO;
 
 /**
  * <p>

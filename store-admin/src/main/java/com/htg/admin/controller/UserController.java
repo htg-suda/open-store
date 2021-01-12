@@ -2,13 +2,14 @@ package com.htg.admin.controller;
 
 import com.htg.admin.service.IUserService;
 import com.htg.admin.utils.JWTUtil;
-import com.htg.common.dto.UserDTO;
-import com.htg.common.dto.UserModifyDTO;
-import com.htg.common.dto.UserPageDTO;
+import com.htg.common.dto.user.UserDTO;
+import com.htg.common.dto.user.UserModifyDTO;
+import com.htg.common.dto.user.UserPageDTO;
+import com.htg.common.entity.user.User;
 import com.htg.common.result.CommonResult;
 import com.htg.common.result.RespPage;
-import com.htg.common.vo.LoginVO;
-import com.htg.common.vo.UserVO;
+import com.htg.common.vo.user.LoginVO;
+import com.htg.common.vo.user.UserVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +34,7 @@ import javax.validation.Valid;
 @Validated
 @Api(tags = "001-用户管理")
 @RestController
-@RequestMapping(value = "/admin/user", name = "用户管理")
+@RequestMapping(value = "/user", name = "用户管理")
 public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -44,7 +45,7 @@ public class UserController {
     @ApiOperation(value = "添加管理员")
     @ResponseBody
     @PostMapping("/add_admin")
-    public CommonResult<UserVO> addAmin(@Valid @RequestBody UserDTO addDTO) {
+    public CommonResult<UserVO> addAdmin(@Valid @RequestBody UserDTO addDTO) {
         UserVO userVO = userService.addUser(addDTO, true);
         return CommonResult.success(userVO);
     }
@@ -74,6 +75,14 @@ public class UserController {
     public CommonResult<RespPage<UserVO>> listUser(@Valid @RequestBody UserPageDTO pageDTO) {
         RespPage<UserVO> page = userService.listUser(pageDTO);
         return CommonResult.success(page);
+    }
+
+    @ApiOperation(value = "通过用户名获取用户信息")
+    @ResponseBody
+    @GetMapping("/info/{username}")
+    public User getUserInfo(@PathVariable("username")  String username) {
+        User user = userService.getUserByUserName(username);
+        return user;
     }
 
 

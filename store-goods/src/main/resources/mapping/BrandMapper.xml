@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htg.goods.mapper.BrandMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.htg.common.entity.goods.Brand">
+        <id column="id" property="id" />
+        <result column="create_user" property="createUser" />
+        <result column="update_user" property="updateUser" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="name" property="name" />
+        <result column="logo" property="logo" />
+        <result column="deleted" property="deleted" />
+        <result column="sort" property="sort" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        create_user,
+        update_user,
+        create_time,
+        update_time,
+        id, name, logo, deleted, sort
+    </sql>
+
+
+
+    <resultMap id="BrandMap" type="com.htg.common.entity.goods.Brand">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="logo" property="logo" />
+        <result column="deleted" property="deleted" />
+        <result column="sort" property="sort" />
+    </resultMap>
+
+    <sql id="BrandList">
+        TB.id ,
+        TB.name ,
+        TB.logo ,
+        TB.deleted ,
+        TB.sort
+    </sql>
+
+    <select id="getBrandByCateId" resultMap="BrandMap" parameterType="map">
+        select <include refid="BrandList"/> from tb_brand_category_rel TR
+            left join tb_brand TB  on TR.brand_id=TB.id
+        where TR.category_id=#{categoryId} order by TR.sort desc
+    </select>
+
+</mapper>

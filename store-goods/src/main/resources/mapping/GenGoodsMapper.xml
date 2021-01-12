@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htg.goods.mapper.GenGoodsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.htg.common.entity.goods.GenGoods">
+        <id column="id" property="id" />
+    <result column="create_user" property="createUser" />
+    <result column="update_user" property="updateUser" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+        <result column="sn" property="sn" />
+        <result column="category_id" property="categoryId" />
+        <result column="brand_id" property="brandId" />
+        <result column="title" property="title" />
+        <result column="sub_title" property="subTitle" />
+        <result column="main_img" property="mainImg" />
+        <result column="sub_imgs" property="subImgs" />
+        <result column="detail" property="detail" />
+        <result column="status" property="status" />
+        <result column="deleted" property="deleted" />
+        <result column="sort" property="sort" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        create_user,
+        update_user,
+        create_time,
+        update_time,
+        id, sn, category_id, brand_id, title, sub_title, main_img, sub_imgs, detail, status, deleted, sort
+    </sql>
+
+</mapper>

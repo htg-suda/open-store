@@ -13,7 +13,7 @@ public class SimpleGenerator {
         String path = System.getProperty("user.dir") + "/src/main/java/";
 
         /* 表名的前缀 */
-        String tablePrefix[] = {"tb"};
+       // String tablePrefix[] = {"tb"};
         String includeTable = null;
 
         AutoGenerator mpg = new AutoGenerator();
@@ -41,22 +41,22 @@ public class SimpleGenerator {
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("123456");
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/open_store?characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://10.0.0.11:1106/db_system?characterEncoding=utf8");
         mpg.setDataSource(dsc);
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         strategy.setCapitalMode(false);
 
-        strategy.setTablePrefix(tablePrefix);// 此处可以修改为您的表前缀
+      //  strategy.setTablePrefix(tablePrefix);// 此处可以修改为您的表前缀
 
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略,下划线变驼峰
 
         /* 需要生成 的表 */
-        strategy.setInclude(new String[]{"tb_user","sys_menu","sys_role","role_menu_rel","user_role_rel"});
+        strategy.setInclude(new String[]{"t_menu"});
 
         /* 基础的 base 类,所有生成的 entity 都继承自 这个类 */
-        strategy.setSuperEntityClass("com.htg.common.base.BaseEntity");
+       // strategy.setSuperEntityClass("com.htg.common.base.BaseEntity");
         /* entity  base类中的 字段,这里的字段不会出现在 entity 类中 */
         strategy.setSuperEntityColumns(new String[]{"create_time", "update_time", "create_user", "update_user"});
         //strategy.setSuperControllerClass("com.adshow.core.common.com.htg.test.controller.BaseController");
@@ -82,12 +82,12 @@ public class SimpleGenerator {
         pc.setModuleName("htg");
 
 
-        pc.setController("user.com.htg.test.controller");
-        pc.setService("user.service");
-        pc.setServiceImpl("user.service.impl");
-        pc.setMapper("user.mapper");
-        pc.setXml("user.mapper.mapping");
-        pc.setEntity("common.entity.user");
+        pc.setController("generate.controller");
+        pc.setService("generate.service");
+        pc.setServiceImpl("generate.service.impl");
+        pc.setMapper("generate.mapper");
+        pc.setXml("generate.mapper.mapping");
+        pc.setEntity("generate.entity");
         mpg.setPackageInfo(pc);
         // 执行生成
         mpg.execute();

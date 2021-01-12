@@ -1,7 +1,7 @@
 package com.htg.admin.mapper;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.htg.common.dto.UserPageDTO;
+import com.htg.common.dto.user.UserPageDTO;
 import com.htg.common.entity.user.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 

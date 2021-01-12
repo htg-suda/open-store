@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: store-goods  # 注意无论怎么配置都与spring.application.name 无关
+    #究竟拉取哪个配置跟 spring.cloud.config.name-spring.application.profiles.active
+  cloud:
+    config:
+      uri: http://localhost:5001 # 配置中心地址
+      name: store-goods-conf    # 这里的name 要跟 git 仓库中的文件名一致才行
+  profiles:
+    active: dev   # 环境使用 home -> dev  company -> pro
+# 只要输入: {config.uri}/{config.name}-{profiles.active}.yml 就应该可以访问到相关的配置
+# 如 http://localhost:5001/store-gateway-conf-dev.yml

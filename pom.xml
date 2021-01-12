@@ -8,14 +8,15 @@
     <artifactId>open-store</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>store-user</module>
-      <!--  <module>mapper-generate</module>-->
-        <module>store-common</module>
-       <module>store-admin</module>
+        <module>mapper-generate</module>
+        <module>store-core</module>
+        <module>store-admin</module>
         <module>store-gateway</module>
         <module>store-test</module>
         <module>store-config-server</module>
         <module>config-files</module>
+        <module>store-auth</module>
+        <module>store-goods</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -23,14 +24,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.4.RELEASE</version>
+        <version>2.3.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <properties>
         <java.version>1.8</java.version>
         <!-- spring cloud 采用 Greenwich.SR1 版本 -->
-        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
     </properties>
 
     <!-- 这里规定了 spring cloud 的 版本号-->
@@ -81,14 +82,10 @@
 
         <!-- Swagger API文档 -->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <!--在引用时请在maven中央仓库搜索2.X最新版本号-->
+            <version>3.0.2</version>
         </dependency>
 
         <dependency>

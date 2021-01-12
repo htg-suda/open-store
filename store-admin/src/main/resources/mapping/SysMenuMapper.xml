@@ -17,7 +17,7 @@
         <result column="deleted" property="deleted"/>
     </resultMap>
 
-    <resultMap id="MenuItemMap" type="com.htg.common.vo.MenuItemVO">
+    <resultMap id="MenuItemMap" type="com.htg.common.vo.user.MenuItemVO">
         <id column="id" property="id"/>
         <result column="parent_id" property="parentId"/>
         <result column="name" property="name"/>

@@ -1,13 +1,12 @@
 package com.htg.admin.service;
-import com.htg.common.dto.MenuModifyDTO;
-import com.htg.common.dto.MenuPageDTO;
-import com.htg.common.dto.SysMenuDTO;
+import com.htg.common.dto.user.MenuModifyDTO;
+import com.htg.common.dto.user.MenuPageDTO;
+import com.htg.common.dto.user.SysMenuDTO;
 import com.htg.common.entity.user.SysMenu;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.htg.common.result.RespPage;
-import com.htg.common.vo.MenuItemVO;
-import com.htg.common.vo.SysMenuVO;
-import org.springframework.stereotype.Service;
+import com.htg.common.vo.user.MenuItemVO;
+import com.htg.common.vo.user.SysMenuVO;
 
 import java.util.List;
 

@@ -4,14 +4,14 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.htg.common.entity.user.UserRoleRel">
-        <id column="id" property="id" />
-    <result column="create_user" property="createUser" />
-    <result column="update_user" property="updateUser" />
-    <result column="create_time" property="createTime" />
-    <result column="update_time" property="updateTime" />
-        <result column="user_id" property="userId" />
-        <result column="role_id" property="roleId" />
-        <result column="deleted" property="deleted" />
+        <id column="id" property="id"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="user_id" property="userId"/>
+        <result column="role_id" property="roleId"/>
+        <result column="deleted" property="deleted"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

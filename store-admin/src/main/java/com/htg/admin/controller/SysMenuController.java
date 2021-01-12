@@ -1,13 +1,13 @@
 package com.htg.admin.controller;
 import com.htg.admin.service.ISysMenuService;
-import com.htg.common.dto.MenuModifyDTO;
-import com.htg.common.dto.MenuPageDTO;
-import com.htg.common.dto.SysMenuDTO;
+import com.htg.common.dto.user.MenuModifyDTO;
+import com.htg.common.dto.user.MenuPageDTO;
+import com.htg.common.dto.user.SysMenuDTO;
 import com.htg.common.entity.user.SysMenu;
 import com.htg.common.result.CommonResult;
 import com.htg.common.result.RespPage;
-import com.htg.common.vo.MenuItemVO;
-import com.htg.common.vo.SysMenuVO;
+import com.htg.common.vo.user.MenuItemVO;
+import com.htg.common.vo.user.SysMenuVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +30,7 @@ import java.util.List;
 @Validated
 @Api(tags = "002-菜单管理")
 @RestController
-@RequestMapping(value = "/admin/menu")
+@RequestMapping(value = "/menu")
 public class SysMenuController {
     @Autowired
     private ISysMenuService sysMenuService;

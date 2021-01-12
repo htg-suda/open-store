@@ -1,0 +1,106 @@
+version: '3'
+services:
+  # 注意 mysql 的配置文件在容器的 /etc/mysql 目录下的 my.cnf 其中指定了 一个 包含了 !includedir /etc/mysql/conf.d 下的配置文件,
+  # 所以只要将 /etc/mysql/conf.d 文件夹映射到宿主机就可以了
+  #---------mysql--------------
+  mysql_main:
+    image: mysql:8.0.20
+    restart: always   # 容器应该在停止的情况下总是重启，比如，服务器启动时，这个容器就跟着启动，不用手动启动
+    container_name: mysql_main
+    ports:
+      - 1106:3306       # 端口映射
+    volumes:
+      - ./volumes/mysql/main/db:/var/lib/mysql # 数据文件挂载
+      - ./volumes/mysql/main/conf.d:/etc/mysql/conf.d #配置文件挂载
+      - ./volumes/mysql/main/log:/var/log/mysql #日志文件挂载
+    environment:       # 设置环境变量
+      MYSQL_ROOT_PASSWORD: 123456
+
+    #---------mysql--------------
+  mysql_slave:
+    image: mysql:8.0.20
+    restart: always   # 容器应该在停止的情况下总是重启，比如，服务器启动时，这个容器就跟着启动，不用手动启动
+    container_name: mysql_slave_01
+    ports:
+      - 2206:3306       # 端口映射
+    volumes:
+      - ./volumes/mysql/slave_01/db:/var/lib/mysql # 数据文件挂载
+      - ./volumes/mysql/slave_01/conf.d:/etc/mysql/conf.d #配置文件挂载
+      - ./volumes/mysql/slave_01/log:/var/log/mysql #日志文件挂载
+    environment: # 设置环境变量
+      MYSQL_ROOT_PASSWORD: 123456
+
+
+
+  #------------nacos-------------
+  nacos_main:
+    image: nacos/nacos-server:1.2.1
+    container_name: nacos_main
+    restart: always
+    ports:
+      - 8848:8848
+    volumes:
+      - ./volumes/nacos/main/logs:/home/nacos/logs
+    environment:
+      JVM_XMS: 256m
+      JVM_XMX: 256m
+      MODE: standalone
+
+
+  # nginx 容器在使用的时候还是要注意的: docker 是无法直接将容器中的文件共享给宿主机的,只能
+  # 先下载容器后 直接启动一把 ,之后把 配置文件cp 到 宿主机
+  # docker run -id nginx:1.18.0
+  # docker cp  ${container_name}:/etc/nginx ./files                ##将 容器的 /etc/nginx 文件夹复制到 当前的files 文件中去
+  # docker cp  ${container_name}:/usr/share/nginx/html ./files     ##将 容器的 /usr/share/nginx/html 文件夹复制到 当前的files 文件中去
+  #  mdir -p ./volumes/nginx/main/    # 创建一个 文件夹 将 files 下的文件都复制过去
+  # cp -r  files/* ./volumes/nginx/main/
+
+
+  #------------Nginx--------------
+  nginx_main:
+    image: nginx:1.18.0
+    container_name: nginx_main
+    restart: always
+    ports:
+      - 8080:80  # 表示容器内部的80 端口映射到宿主机的8080端口
+      - 443:443  # 443 端口是用于HTTPS服务
+    volumes:
+      - ./volumes/nginx/main/html:/usr/share/nginx/html        # 默认的的网页是在/usr/share/nginx/html,可以在 nginx.conf 中配置
+      - ./volumes/nginx/main/nginx:/etc/nginx                  # nginx 配置文件 文件夹
+      - ./volumes/nginx/main/log:/var/log/nginx                # 日志目录
+      - ./volumes/nginx/main/www:/var/www
+      - ./volumes/nginx/main/etc/letsencrypt:/etc/letsencrypt
+
+# ------------------Redis -----------------------
+  # 启动后的连接方式  docker exec -it redis_main redis-cli
+  redis_main:
+    image: redis:6.0.5
+    container_name: redis_main
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - ./volumes/redis/main/data:/data
+      - ./volumes/redis/main/logs:/logs
+    command: redis-server  --requirepass 123456  # 设置密码
+
+
+#-----------RabbitMQ-------------
+# 浏览器访问 ip:15672即可， 输入用户名，密码root登录。
+  rabbitmq_main:
+    hostname: rabbitmq                  #
+    environment:
+      RABBITMQ_DEFAULT_USER: "htg"          # 默认用户名 如果不设置，默认是 guest
+      RABBITMQ_DEFAULT_PASS: "123456"      # 默认的用户的密码 如果不设置，默认是 guest
+      TZ: Asia/Shanghai
+    image: rabbitmq:3.8.5-management
+    container_name: rabbitmq_main
+    restart: always
+    volumes:
+      - ./volumes/rabbitmq/main/data:/var/lib/rabbitmq
+      - ./volumes/rabbitmq/main/log:/var/log/rabbitmq/log
+    ports:
+      - 15672:15672    # 管理界面ui端口
+      - 4369:4369      # erlang发现口
+      - 5672:5672      # client端通信口
+      - 25672:25672    # server间内部通信口

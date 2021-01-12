@@ -1,6 +1,6 @@
 package com.htg.admin.service.impl;
 
-import com.htg.common.dto.SysRoleDTO;
+import com.htg.common.dto.user.SysRoleDTO;
 import com.htg.common.entity.user.SysRole;
 import com.htg.admin.mapper.SysRoleMapper;
 import com.htg.admin.service.ISysRoleService;
@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.htg.common.exception.BizExcp;
 import com.htg.common.exception.DaoExcp;
 import com.htg.common.result.CodeEnum;
-import com.htg.common.vo.SysRoleVO;
+import com.htg.common.vo.user.SysRoleVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 

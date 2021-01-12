@@ -7,5 +7,5 @@ spring:
       uri: http://localhost:5001 # 配置中心地址
       name: store-admin-conf    # 这里的name 要跟 git 仓库中的文件名一致才行
   profiles:
-    active: DEV
-# 只要输入: http://{config.uri}/{config.name}-{profiles.active}.yml 就应该可以访问到相关的配置
+    active: dev   # home -> dev  company -> pro
+# 只要输入: {config.uri}/{config.name}-{profiles.active}.yml 就应该可以访问到相关的配置
