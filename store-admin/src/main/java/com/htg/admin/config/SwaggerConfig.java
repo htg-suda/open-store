@@ -2,6 +2,8 @@ package com.htg.admin.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
+import org.springframework.security.core.Authentication;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -23,7 +25,7 @@ public class SwaggerConfig {
 
     @Bean
     public Docket createRestApi() {
-        return new Docket(DocumentationType.OAS_30)
+        return new Docket(DocumentationType.OAS_30).ignoredParameterTypes(Authentication.class)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.htg"))
                 .paths(PathSelectors.any())
@@ -33,7 +35,7 @@ public class SwaggerConfig {
     }
 
     private List<RequestParameter> globalRequestParameters() {
-        RequestParameterBuilder parameterBuilder = new RequestParameterBuilder().in(ParameterType.HEADER).name("Token").required(false).query(param -> param.model(model -> model.scalarModel(ScalarType.STRING)));
+        RequestParameterBuilder parameterBuilder = new RequestParameterBuilder().in(ParameterType.HEADER).name(HttpHeaders.AUTHORIZATION).required(false).query(param -> param.model(model -> model.scalarModel(ScalarType.STRING)));
         return Collections.singletonList(parameterBuilder.build());
     }
 

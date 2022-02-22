@@ -1,6 +1,6 @@
 package com.htg.admin;
 
-import com.htg.admin.utils.JWTUtil;
+import com.htg.utils.JWTUtil;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Slf4j
 public class AdminTest {
@@ -16,6 +17,12 @@ public class AdminTest {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         String encode = encoder.encode("123qwe");
         System.out.println(encode);
+
+        boolean matches = encoder.matches("123qwe", encode);
+        System.out.println("matches:" + matches);
+
+        System.out.println(UUID.randomUUID().toString().replaceAll("-",""));
+
         String jwt = JWTUtil.generateJWTByUserName("htg");
         System.out.println(jwt);
 
@@ -26,8 +33,8 @@ public class AdminTest {
             Date exp = claims.getExpiration();
             String issuer = claims.getIssuer();
             log.info("username is {}", username);
-            log.info("exp {}",exp);
-            log.info("issuer is {}",issuer);
+            log.info("exp {}", exp);
+            log.info("issuer is {}", issuer);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,8 +50,8 @@ public class AdminTest {
             Date exp = claims.getExpiration();
             String issuer = claims.getIssuer();
             log.info("username is {}", username);
-            log.info("exp {}",exp);
-            log.info("issuer is {}",issuer);
+            log.info("exp {}", exp);
+            log.info("issuer is {}", issuer);
         } catch (Exception e) {
             e.printStackTrace();
         }

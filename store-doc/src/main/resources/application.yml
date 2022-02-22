@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: dev
+
+---
+server:
+  port: 6002
+
+spring:
+  application:
+    name: store-doc
+  profiles: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.2.51:8848
+
+knife4j:
+  enableAggregation: true
+  cloud:
+    enable: true
+    routes:
+      - name: 用户管理
+        uri: localhost:9000
+        serviceName: store-admin
+        location: /admin/v3/api-docs?group=default
+        swaggerVersion: 3.0
+
+      - name: 测试服务
+        uri: localhost:9000
+        serviceName: store-test
+        location: /test/v3/api-docs?group=default
+        swaggerVersion: 3.0

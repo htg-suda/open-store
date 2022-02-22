@@ -7,14 +7,18 @@
     <file url="file://$PROJECT_DIR$/mapper-generate/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-admin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-admin/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/store-common" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/store-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/store-auth/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/store-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/store-core/store-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/store-core/store-public-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/store-core/store-utils/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/store-doc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/store-faker/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-gateway" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/store-goods/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-test" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/store-test/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/store-user" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/store-user/src/main/java" charset="UTF-8" />
   </component>
 </project>

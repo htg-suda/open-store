@@ -1,0 +1,10 @@
+127.0.0.1	localhost
+::1	localhost ip6-localhost ip6-loopback
+fe00::0	ip6-localnet
+ff00::0	ip6-mcastprefix
+ff02::1	ip6-allnodesff02::2	ip6-allrouters
+172.20.1.10	hadoop10
+172.20.1.20	hadoop20
+172.20.1.30	hadoop30
+172.20.1.40	hadoop40
+172.20.1.50	hadoop50

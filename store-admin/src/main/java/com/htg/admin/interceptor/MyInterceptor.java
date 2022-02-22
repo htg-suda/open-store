@@ -16,27 +16,7 @@ public class MyInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String method = request.getMethod();
         String requestURI = request.getRequestURI();
-        String pathInfo = request.getPathInfo();
-        String queryString = request.getQueryString();
-        String remoteUser = request.getRemoteUser();
-        String contextPath = request.getContextPath();
-        log.info("     method :: {}", method);
-        log.info(" requestURI :: {}", requestURI);
-        log.info("queryString :: {}", queryString);
-        log.info("   pathInfo :: {}", pathInfo);
-        log.info(" remoteUser :: {}", remoteUser);
-        log.info("contextPath :: {}", contextPath);
-
-        Enumeration<String> headerNames = request.getHeaderNames();
-        while (headerNames.hasMoreElements()) {
-            String name = headerNames.nextElement();
-            String item = name + " => ";
-            Enumeration<String> headers = request.getHeaders(name);
-            while (headers.hasMoreElements()) {
-                item = item + headers.nextElement() + " ;; ";
-            }
-            log.info(item);
-        }
+        log.info("method :: {} , requestURI :: {}", method, requestURI);
         return true;
     }
 

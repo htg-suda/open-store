@@ -9,10 +9,29 @@ spring:
   application:
     name: store-test
   profiles: dev_loc   # 本地测试
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.2.51:1106/test_db?characterEncoding=utf-8&serverTimezone=GMT%2B8
+  rabbitmq:
+    host: 192.168.2.51
+    port: 5672
+    username: htg
+    password: 123456
+    virtual-host: /
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 192.168.2.51:8848
+knife4j:
+  enable: true
+
+zookeeper:
+  address: 192.168.2.51:2181
+  timeout: 4000
+
+
 
 ---
 server:
@@ -21,6 +40,11 @@ spring:
   application:
     name: store-test
   profiles: dev_remote   # 本地测试
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:1106/db_store_goods?characterEncoding=utf-8&serverTimezone=GMT%2B8
   cloud:
     nacos:
       discovery:

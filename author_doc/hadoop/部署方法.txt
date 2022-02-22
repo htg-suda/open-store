@@ -1,0 +1,21 @@
+1,将整个hadoop 文件夹目标机器里面
+2，创建一个网络用于设置容器的固定IP:
+docker network create -d bridge --subnet=172.20.1.0/16 --gateway=172.20.1.1 htg_net
+
+3,进入hadoop 文件夹构建镜像
+docker build -t "hadoop-openjdk11-ssh:1.0.1" .
+
+4,输入 docker-compose up -d 编排镜像
+
+5,进入主节点容器
+docker exec -it hadoop10 /bin/bash
+
+6,在主节点容器里面执行如下命令，密码是admin 将主节点容器里面的ssh 公钥上传到各个节点(主节点和从节点都要)，这样就可以免密登录
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@hadoop10
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@hadoop20
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@hadoop30
+
+7,在主节点容器中执行如下命令格式化数据,开启集群
+hdfs namenode -format
+cd /usr/local/hadoop/sbin
+./start-dfs.sh

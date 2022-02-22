@@ -1,6 +1,8 @@
 /* 所谓的 pipeline 就是软件定义编译过程 */
 /* */
-/* https://jenkins.io/zh/doc/book/pipeline/syntax/ */
+/*
+ https://jenkins.io/zh/doc/book/pipeline/syntax/
+ */
 pipeline {
     agent any
     environment {  // 配置环境变量

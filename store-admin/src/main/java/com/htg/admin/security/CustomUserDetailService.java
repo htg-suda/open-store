@@ -26,7 +26,7 @@ public class CustomUserDetailService implements UserDetailsService {
         Integer status = user.getStatus();
 
         List<GrantedAuthority> list=new ArrayList<>();
-        list.add(new MySimpleAuthority(""));
+        list.add(new SimpleUserAuthority(""));
 
         CustomUserDetails details = new CustomUserDetails(password, name, null, status);
         return details;

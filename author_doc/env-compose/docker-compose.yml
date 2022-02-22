@@ -16,7 +16,7 @@ services:
     environment:       # 设置环境变量
       MYSQL_ROOT_PASSWORD: 123456
 
-    #---------mysql--------------
+  #---------mysql--------------
   mysql_slave:
     image: mysql:8.0.20
     restart: always   # 容器应该在停止的情况下总是重启，比如，服务器启动时，这个容器就跟着启动，不用手动启动
@@ -104,3 +104,18 @@ services:
       - 4369:4369      # erlang发现口
       - 5672:5672      # client端通信口
       - 25672:25672    # server间内部通信口
+
+  mongo_main:
+    image: mongo:4.2.16
+    ports:
+      - 27017:27017
+    restart: always
+    #让容器拥有root权
+    privileged: true
+    volumes:
+      # 挂载数据目录
+      - ./mongo1/db:/data/db
+      # 挂载日志目录
+      - ./mongo1/log:/var/log/mongodb
+      # 挂载配置目录
+      - ./mongo1/config:/etc/mongo

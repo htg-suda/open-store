@@ -4,15 +4,15 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.htg.common.entity.goods.BrandCategoryRel">
-        <id column="id" property="id" />
-    <result column="create_user" property="createUser" />
-    <result column="update_user" property="updateUser" />
-    <result column="create_time" property="createTime" />
-    <result column="update_time" property="updateTime" />
-        <result column="category_id" property="categoryId" />
-        <result column="brand_id" property="brandId" />
-        <result column="deleted" property="deleted" />
-        <result column="sort" property="sort" />
+        <id column="id" property="id"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="deleted" property="deleted"/>
+        <result column="sort" property="sort"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

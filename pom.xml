@@ -17,6 +17,8 @@
         <module>config-files</module>
         <module>store-auth</module>
         <module>store-goods</module>
+        <module>store-faker</module>
+        <module>store-doc</module>
     </modules>
     <packaging>pom</packaging>
 

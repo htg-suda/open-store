@@ -1,0 +1,67 @@
+version: '3'
+networks:
+  htg_net:
+    external: true
+services:
+  hadoop10:
+    image: hadoop-openjdk11-ssh:1.0.1
+    restart: always   # 容器应该在停止的情况下总是重启，比如，服务器启动时，这个容器就跟着启动，不用手动启动
+    container_name: hadoop10
+    hostname: hadoop10
+    privileged: true
+    ports:
+      - "50070:50070"       # 端口映射
+      - "8088:8088"         # 端口映射
+      - "9870:9870"
+    volumes:
+      - ./etc/hadoop/core-site.xml:/usr/local/hadoop/etc/hadoop/core-site.xml      # 数据文件挂载
+      - ./etc/hadoop/hdfs-site.xml:/usr/local/hadoop/etc/hadoop/hdfs-site.xml      # 数据文件挂载
+      - ./etc/hadoop/mapred-site.xml:/usr/local/hadoop/etc/hadoop/mapred-site.xml  # 数据文件挂载
+      - ./etc/hadoop/yarn-site.xml:/usr/local/hadoop/etc/hadoop/yarn-site.xml      # 数据文件挂载
+      - ./etc/hadoop/hadoop-env.sh:/usr/local/hadoop/etc/hadoop/hadoop-env.sh     # 数据文件挂载
+      - ./etc/hadoop/workers:/usr/local/hadoop/etc/hadoop/workers                  # 数据文件挂载
+#      - ./.ssh/authorized_keys:/root/.ssh/authorized_keys                          # 所有公钥的集合
+      - ./host/hosts:/etc/hosts
+    networks:
+      htg_net:
+        ipv4_address: 172.20.1.10
+
+  hadoop20:
+    image: hadoop-openjdk11-ssh:1.0.1
+    restart: always   # 容器应该在停止的情况下总是重启，比如，服务器启动时，这个容器就跟着启动，不用手动启动
+    container_name: hadoop20
+    hostname: hadoop20
+    privileged: true
+    volumes:
+      - ./etc/hadoop/core-site.xml:/usr/local/hadoop/etc/hadoop/core-site.xml     # 数据文件挂载
+      - ./etc/hadoop/hdfs-site.xml:/usr/local/hadoop/etc/hadoop/hdfs-site.xml     # 数据文件挂载
+      - ./etc/hadoop/mapred-site.xml:/usr/local/hadoop/etc/hadoop/mapred-site.xml # 数据文件挂载
+      - ./etc/hadoop/yarn-site.xml:/usr/local/hadoop/etc/hadoop/yarn-site.xml     # 数据文件挂载
+      - ./etc/hadoop/hadoop-env.sh:/usr/local/hadoop/etc/hadoop/hadoop-env.sh     # 数据文件挂载
+      - ./etc/hadoop/workers:/usr/local/hadoop/etc/hadoop/workers                 # 数据文件挂载
+ #     - ./.ssh/authorized_keys:/root/.ssh/authorized_keys                         # 所有公钥的集合
+      - ./host/hosts:/etc/hosts                                                   # hosts 文件
+    networks:
+      htg_net:
+        ipv4_address: 172.20.1.20
+
+  hadoop30:
+    image: hadoop-openjdk11-ssh:1.0.1
+    restart: always   # 容器应该在停止的情况下总是重启，比如，服务器启动时，这个容器就跟着启动，不用手动启动
+    container_name: hadoop30
+    hostname: hadoop30
+    privileged: true
+    ports:
+      - "9868:9868"
+    volumes:
+      - ./etc/hadoop/core-site.xml:/usr/local/hadoop/etc/hadoop/core-site.xml     # 数据文件挂载
+      - ./etc/hadoop/hdfs-site.xml:/usr/local/hadoop/etc/hadoop/hdfs-site.xml     # 数据文件挂载
+      - ./etc/hadoop/mapred-site.xml:/usr/local/hadoop/etc/hadoop/mapred-site.xml # 数据文件挂载
+      - ./etc/hadoop/yarn-site.xml:/usr/local/hadoop/etc/hadoop/yarn-site.xml     # 数据文件挂载
+      - ./etc/hadoop/hadoop-env.sh:/usr/local/hadoop/etc/hadoop/hadoop-env.sh     # 数据文件挂载
+      - ./etc/hadoop/workers:/usr/local/hadoop/etc/hadoop/workers                 # 数据文件挂载
+#      - ./.ssh/authorized_keys:/root/.ssh/authorized_keys                         # 所有公钥的集合
+      - ./host/hosts:/etc/hosts
+    networks:
+      htg_net:
+        ipv4_address: 172.20.1.30

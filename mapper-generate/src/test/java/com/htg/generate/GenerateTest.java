@@ -30,7 +30,7 @@ public class GenerateTest {
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(true);// XML ResultMap
         gc.setBaseColumnList(true);// XML columList
-
+        gc.setSwagger2(true);
         gc.setMapperName("%sMapper");
         gc.setXmlName("%sMapper");
         gc.setServiceName("I%sService");
@@ -44,7 +44,7 @@ public class GenerateTest {
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("123456");
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/open_store?characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:1106/open_store?characterEncoding=utf8");
         mpg.setDataSource(dsc);
 
         // 策略配置
@@ -56,7 +56,12 @@ public class GenerateTest {
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略,下划线变驼峰
 
         /* 需要生成 的表 */
-        strategy.setInclude(new String[]{"tb_user","sys_menu","sys_role","role_menu_rel","user_role_rel"});
+        strategy.setInclude(new String[]{
+                "tb_goods_category","tb_brand","tb_brand_category_rel",
+                "tb_gen_goods","tb_def_goods","spec_group","spec_key",
+                "gen_spec_value","def_spec_value"
+
+        });
 
         /* 基础的 base 类,所有生成的 entity 都继承自 这个类 */
         strategy.setSuperEntityClass("com.htg.common.base.BaseEntity");
@@ -85,12 +90,12 @@ public class GenerateTest {
         pc.setModuleName("htg");
 
 
-        pc.setController("admin.com.htg.test.controller");
-        pc.setService("admin.service");
-        pc.setServiceImpl("admin.service.impl");
-        pc.setMapper("admin.mapper");
-        pc.setXml("admin.mapper.mapping");
-        pc.setEntity("common.entity.user");
+        pc.setController("goods.com.htg.test.controller");
+        pc.setService("goods.service");
+        pc.setServiceImpl("goods.service.impl");
+        pc.setMapper("goods.mapper");
+        pc.setXml("goods.mapper.mapping");
+        pc.setEntity("common.entity.goods");
         mpg.setPackageInfo(pc);
         // 执行生成
         mpg.execute();

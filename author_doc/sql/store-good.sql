@@ -155,17 +155,3 @@ create table def_spec_value(
 )charset utf8 comment '商品通用规格值表';
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

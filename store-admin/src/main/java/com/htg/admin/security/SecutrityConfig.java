@@ -46,12 +46,12 @@ public class SecutrityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.cors();
         http.authorizeRequests()
-                .antMatchers("/**").permitAll()
+               // .antMatchers("/**").permitAll()
 
                 /* 允许登陆接口 */
-                .antMatchers("/admin/user/login").permitAll()
+                .antMatchers("/manage_user/auth").permitAll()
                 /* 允许添加管理员 */
-                .antMatchers("/admin/user/login").permitAll()
+                .antMatchers("/manage_user/login").permitAll()
 
                 /* swagger start */
                 .antMatchers("/swagger-ui.html").permitAll()

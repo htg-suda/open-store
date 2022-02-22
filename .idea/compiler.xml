@@ -7,27 +7,42 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="store-admin" />
-        <module name="store-config-server" />
-        <module name="store-common" />
-        <module name="store-user" />
-        <module name="store-gateway" />
-        <module name="store-test" />
         <module name="config-files" />
+        <module name="store-doc" />
+        <module name="store-test" />
+        <module name="store-config-server" />
+        <module name="store-public-api" />
+        <module name="store-faker" />
+        <module name="store-admin" />
+        <module name="store-common" />
+        <module name="store-utils" />
         <module name="mapper-generate" />
+        <module name="store-goods" />
+        <module name="store-auth" />
+        <module name="store-gateway" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="store-user" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="config-files" options="-parameters" />
       <module name="mapper-generate" options="-parameters" />
       <module name="store-admin" options="-parameters" />
+      <module name="store-auth" options="-parameters" />
       <module name="store-common" options="-parameters" />
       <module name="store-config-server" options="-parameters" />
+      <module name="store-core" options="-parameters" />
+      <module name="store-doc" options="-parameters" />
+      <module name="store-faker" options="-parameters" />
       <module name="store-gateway" options="-parameters" />
+      <module name="store-goods" options="-parameters" />
+      <module name="store-public-api" options="-parameters" />
       <module name="store-test" options="-parameters" />
       <module name="store-user" options="-parameters" />
+      <module name="store-utils" options="-parameters" />
     </option>
   </component>
 </project>

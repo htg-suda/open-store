@@ -1,0 +1,50 @@
+spring:
+  profiles:
+    active: dev_loc
+
+---
+server:
+  port: 9919
+spring:
+  application:
+    name: store-faker
+  profiles: dev_loc   # 本地测试
+  redis:
+    database: 1
+    host: 192.168.2.51
+    port: 6379
+    password: 123456
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.2.51:1106/test_db?characterEncoding=utf-8&serverTimezone=GMT%2B8
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.2.51:8848
+  data:
+    mongodb:
+      uri: mongodb://192.168.2.51:27017/test_db
+
+---
+server:
+  port: 9919
+spring:
+  application:
+    name: store-faker
+  profiles: dev_remote   # 本地测试
+  redis:
+    database: 1
+    host: 192.168.2.51
+    port: 6379
+    password: 123456
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.2.51:1106/test_db?characterEncoding=utf-8&serverTimezone=GMT%2B8
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.0.0.57:8848
