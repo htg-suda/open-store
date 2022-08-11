@@ -95,7 +95,7 @@
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
-            <version>3.3.1</version>
+            <version>3.3.3</version>
         </dependency>
         <!-- 引入hadoop-hdfs Jar包 -->
         <dependency>
